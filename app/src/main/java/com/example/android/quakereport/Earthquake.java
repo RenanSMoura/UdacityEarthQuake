@@ -1,34 +1,39 @@
 package com.example.android.quakereport;
 
-import java.util.Date;
-
 /**
  * Created by Renan on 27/07/2017.
  */
 
 public class Earthquake {
 
-    private String mMagnitude;
+    private double mMagnitude;
 
     private String mLocation;
 
-    private String mDate;
+    private long mTimeInMiliSeconds;
 
-    public Earthquake(String magnitude, String location, String date) {
+    private String mUrl;
+
+    public Earthquake(double magnitude, String location, long timeInMiliSeconds,String url) {
         this.mMagnitude = magnitude;
         this.mLocation = location;
-        this.mDate = date;
+        this.mTimeInMiliSeconds = timeInMiliSeconds;
+        this.mUrl = url;
     }
 
-    public String getMagnitude() {
+    public double getMagnitude() {
         return mMagnitude;
     }
 
-    public String getDate() {
-        return mDate;
+    public long getmTimeInMiliSeconds() {
+        return mTimeInMiliSeconds;
     }
 
     public String getLocation() {
         return mLocation;
+    }
+
+    public String getmUrl(){
+        return mUrl;
     }
 }

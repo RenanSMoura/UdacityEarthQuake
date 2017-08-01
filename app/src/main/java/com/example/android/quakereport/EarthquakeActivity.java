@@ -15,9 +15,13 @@
  */
 package com.example.android.quakereport;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.ArrayAdapter;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -32,14 +36,8 @@ public class EarthquakeActivity extends AppCompatActivity {
         setContentView(R.layout.earthquake_activity);
 
         // Create a fake list of earthquake locations.
-        ArrayList<Earthquake> earthquakes = new ArrayList<Earthquake>();
-        earthquakes.add(new Earthquake("5.4","California CA","Mar 01 1876"));
-        earthquakes.add(new Earthquake("3.1","Rio de Janeiro RJ","Abr 11 1976"));
-        earthquakes.add(new Earthquake("7.3","California CA","Mar 01 1876"));
-        earthquakes.add(new Earthquake("9.0","California CA","Mar 01 1876"));
-        earthquakes.add(new Earthquake("4.1","California CA","Mar 01 1876"));
-        earthquakes.add(new Earthquake("3.6","California CA","Mar 01 1876"));
-        earthquakes.add(new Earthquake("2.7","California CA","Mar 01 1876"));
+        final ArrayList<Earthquake> earthquakes = QueryUtils.extractEarthquakes();
+
 
         // Find a reference to the {@link ListView} in the layout
         ListView earthquakeListView = (ListView) findViewById(R.id.list);
@@ -47,6 +45,16 @@ public class EarthquakeActivity extends AppCompatActivity {
         // Create a new {@link ArrayAdapter} of earthquakes
         EarthquakeArrayAdapter earthquakeActivity = new EarthquakeArrayAdapter(EarthquakeActivity.this,earthquakes);
 
+        earthquakeListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Earthquake earthquake = earthquakes.get(position);
+                Uri uri = Uri.parse(earthquake.getmUrl());
+                Intent intent = new Intent(Intent.ACTION_VIEW,uri);
+                startActivity(intent);
+
+            }
+        });
 
         // Set the adapter on the {@link ListView}
         // so the list can be populated in the user interface

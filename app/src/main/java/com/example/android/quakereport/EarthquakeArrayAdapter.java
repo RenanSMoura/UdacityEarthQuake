@@ -21,9 +21,10 @@ import java.util.Locale;
  */
 
 public class EarthquakeArrayAdapter extends ArrayAdapter<Earthquake> {
-    private static final String LOCATION_SEPARATOR = " of ";
+    private static final  String LOCATION_SEPARATOR = " of ";
     private DecimalFormat decimalFormat;
-    int magnitudeColor;
+    private int           magnitudeColor;
+
     public EarthquakeArrayAdapter(Context context, ArrayList<Earthquake> earthquakes) {
         super(context, 0,earthquakes);
     }

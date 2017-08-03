@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 Quake Report App
 ===================================
 
@@ -53,4 +53,3 @@ License for the specific language governing permissions and limitations under
 the License.
 =======
 # UdacityEarthQuake
->>>>>>> 2f4ceb07528e6d7954e0281af3b3c3a515f7a11e
